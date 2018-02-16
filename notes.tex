@@ -11,9 +11,27 @@
 \newcommand{\bb}[1]{\mathbb{#1}}
 \newcommand{\abs}[1]{\left\lvert#1\right\rvert}
 \newcommand{\inner}[2]{\langle #1, #2 \rangle}
+\newcommand{\de}{\mathrm{d}}
+\newcommand{\frakx}{\mathfrak{X}}
+\newcommand{\partials}[2]{\frac{\partial #1}{\partial #2}}
 
 \begin{document}
 
-	Let $V$ be a vector space over $\bb{R}$.
+	\section*{Definitions}
+
+	Let $V$ be a vector space over $\bb{R}$. The dual space of $V$ is $V^*$, the set of linear functions $V \to \bb{R}$. Let $0 \leq k < \dim(V)$. The tensor product $(V^*)^{\otimes k}$ is the set of k-linear functions $V^k \to \bb{R}$. The exterior k-forms $\Lambda^k(V^*)$ are a subset of $(V^*)^{\otimes k}$, specifically the asymmetric functions.
+
+	\gap
+	Let $M$ be a smooth manifold. Then $T_p M$ is the tangent plane of $M$ at the point $p \in M$. Also, $TM$ is informally used as a function $p \mapsto T_p M$. The dual space $(T_p M)^*$ is written $T_p^* M$. Similarly, $T^* M$ refers to $p \mapsto T_p^* M$. (Apparently $TM$ is called the tangent bundle and $T^* M$ is called the cotangent bundle.) Note that $T_p \bb{R}^n$ is $\bb{R}^n$ itself for any $p \in \bb{R}^n$.
+
+	\gap
+	Many of these linear algebraic objects can be parameterized by a point on a manifold. For example, vector spaces are generalized by smooth vector fields. For a smooth manifold $M$, define $\frakx(M)$ as the set of smooth functions that take each point $p \in M$ to a vector in $T_p M$. Restricting to a single point $p$, we get a vector space ($T_p M$).
+
+	Differential forms generalize exterior forms in the same way. For $0 \leq k < \dim(V)$, $\Omega^k(M)$ is the set of "smooth" functions that take each point $p \in M$ to a $k$-form in $\Lambda^k(T_p^* M)$. Restricting to a single point $p$, all we get a space of $k$-forms ($\Lambda^k(T_p^* M)$). The differential forms $\Omega^k(M)$ were defined in class as $\{\sum_I a_I \de x_I \mid a_I \text{ smooth}\}$. This is essentially equivalent to the definition here, except "smooth" is in quotes since we never defined what it means for a function like this to be smooth, but it is the same idea. Note that $\Omega^0(M)$ is just $C^\infty(M, \bb{R})$, the set of all smooth functions $M \to \bb{R}$.
+
+	\section*{$\de$}
+	The symbol $\de$ has many meanings. Suppose $f : M \to N$ is a smooth function between smooth manifolds $M$ and $N$. Then for $p \in M$, $\de f|_p : T_p M \to T_{f(p)} N$ is linear. Explicitly, with $v \in T_p M$, $\de f|_p(v) = \sum \partials{f}{x_i} v_i$. % TODO: this last part sucks
+
+	\subsection*{$\de : \Omega^k \to \Omega^{k+1}$}
 
 \end{document}
