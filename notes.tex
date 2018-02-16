@@ -25,8 +25,8 @@
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\C}{\mathbb{C}}
 
-\newcommand\m[1]{\begin{pmatrix}#1\end{pmatrix}} 
-\newcommand\mb[1]{\begin{bmatrix}#1\end{bmatrix}} 
+\newcommand\m[1]{\begin{pmatrix}#1\end{pmatrix}}
+\newcommand\mb[1]{\begin{bmatrix}#1\end{bmatrix}}
 
 \begin{document}
 
@@ -46,5 +46,11 @@
 	The symbol $\de$ has many meanings. Suppose $f : M \to N$ is a smooth function between smooth manifolds $M$ and $N$. Then for $p \in M$, $\de f|_p : T_p M \to T_{f(p)} N$ is linear. Explicitly, with $v \in T_p M$, $\de f|_p(v) = \sum \partials{f}{x_i} v_i$. % TODO: this last part sucks
 
 	\subsection*{$\de : \Omega^k \to \Omega^{k+1}$}
+
+	\section*{Pullbacks}
+	Let $f : M \to N$ be smooth and $\omega \in \Omega^k(N)$, so for $q \in N$, $\omega|_q \in \Lambda^k(T_q^* N)$. We want the pullback to be $f^* \omega \in \Omega^k(M)$, so for $p \in M$, $(f^* \omega)|_p \in \Lambda^k(T_p^* M)$. Using the fact that exterior $k$-forms are $k$-linear functions, and for $p \in M$ and $v_1, \ldots, v_k \in T_p M$, the pullback is defined as
+	\[ ((f^* \omega)|_p)(v_1, \ldots, v_k) = (\omega|_{f(p)})(\de f|_p(v_1), \ldots, \de f|_p(v_k)). \]
+	The reason $\de f|_p$ is involved is because it maps from $T_p M$ to $T_{f(p)} N$. In fact, the pullback $(f^* \omega)|_p$ is really the dual of the linear map $\de f|_p$, namely $(\de f|_p)^* (\omega|_{f(p)})$. Less precisely, pullbacks can be written by excluding all mentions of $p$ and making the pointwise definition implicit:
+	\[ f^* \omega(v_1, \ldots, v_k) = \omega(\de f(v_1), \ldots, \de f(v_k)). \]
 
 \end{document}
