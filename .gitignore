@@ -1,4 +1,5 @@
 **/*.swp
 **/.DS_Store
-*.log
-*.aux
+**/*.log
+**/*.aux
+**/*.synctex.gz
