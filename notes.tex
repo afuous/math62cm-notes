@@ -40,17 +40,34 @@
 	\gap
 	Many of these linear algebraic objects can be parameterized by a point on a manifold. For example, vector spaces are generalized by smooth vector fields. For a smooth manifold $M$, define $\frakx(M)$ as the set of smooth functions that take each point $p \in M$ to a vector in $T_p M$. Restricting to a single point $p$, we get a vector space ($T_p M$).
 
-	Differential forms generalize exterior forms in the same way. For $0 \leq k < \dim(V)$, $\Omega^k(M)$ is the set of "smooth" functions that take each point $p \in M$ to a $k$-form in $\Lambda^k(T_p^* M)$. Restricting to a single point $p$, all we get a space of $k$-forms ($\Lambda^k(T_p^* M)$). The differential forms $\Omega^k(M)$ were defined in class as $\{\sum_I a_I \de x_I \mid a_I \text{ smooth}\}$. This is essentially equivalent to the definition here, except "smooth" is in quotes since we never defined what it means for a function like this to be smooth, but it is the same idea. Note that $\Omega^0(M)$ is just $C^\infty(M, \bb{R})$, the set of all smooth functions $M \to \bb{R}$.
+	Differential forms generalize exterior forms in the same way. For $0 \leq k < \dim(V)$, $\Omega^k(M)$ is the set of "smooth" functions that take each point $p \in M$ to a $k$-form in $\Lambda^k(T_p^* M)$. Restricting to a single point $p$, all we get a space of $k$-forms ($\Lambda^k(T_p^* M)$). The differential forms $\Omega^k(M)$ were defined in class as $\{\sum_I a_I \de x_I \mid a_I : M \to \bb{R} \text{ smooth}\}$, where $\{\de x_I\}$ forms a basis for $\Lambda^k(T_p^* M)$. This is essentially equivalent to the definition here, except "smooth" is in quotes since we never defined what it means for a function with a codomain of $k$-forms to be smooth, but it is the same idea. Note that $\Omega^0(M)$ is just $C^\infty(M, \bb{R})$, the set of all smooth functions $M \to \bb{R}$.
 
-	\section*{$\de$}
-	The symbol $\de$ has many meanings. Suppose $f : M \to N$ is a smooth function between smooth manifolds $M$ and $N$. Then for $p \in M$, $\de f|_p : T_p M \to T_{f(p)} N$ is linear. Explicitly, with $v \in T_p M$, $\de f|_p(v) = \sum \partials{f}{x_i} v_i$. % TODO: this last part sucks
+	\section*{d}
+	The symbol $\de$ has many meanings. Suppose $f : M \to N$ is a smooth function between smooth manifolds $M$ and $N$. Then for $p \in M$, $\de f_p : T_p M \to T_{f(p)} N$ is linear. It can also be written $\de f|_p$ instead of $\de f_p$.
 
-	\subsection*{$\de : \Omega^k \to \Omega^{k+1}$}
+	\gap
+	If $M = \bb{R}^m$ and $N = \bb{R}^n$, then for any $v \in T_p M$,
+	\[ \de f_p(v) = \sum_{i=1}^{n} \partials{f}{x_i} \bigg|_p v_i. \]
+	In matrix form, if $f(x) = (f_1(x), \ldots, f_n(x))$, $\de f_p$ has $n$ rows and $m$ columns, with $ij$th element $\partials{f_i}{x_j} \big|_p$. Equivalently,
+	\[ \de f_p(v) = \lim_{h \to 0} \frac{1}{h} (f(p + hv) - f(p)) = \frac{\de}{\de t} \big|_{t=0} f(p + tv). \]
+	The definition of $\de f$ on general manifolds is not necessary to include.
 
-	\section*{Pullbacks}
+	\gap
+	When written $\de f$, this implicitly means a function $p \mapsto \de f_p$. Similarly, if $X \in \frakx(M)$, $\de f(X)$ implicitly means a function $p \mapsto \de f_p(X|_p)$ (see: pushforward).
+
+	\gap
+	Another meaning is $\de : \Omega^k \to \Omega^{k+1}$, from differential $k$-forms to differential $(k+1)$-forms. Let $\omega = \sum_I a_I \de x_I$, then $\de \omega = \sum_I \de a_I \wedge \de x_I$. Here, each $a_I$ is a function $M \to \bb{R}$, so $\de a_I : T_p M \to T_{f(p)} \bb{R} = T_p M \to \bb{R} = T_p^* M$ is as above. At each point $p \in M$, $\de \omega|_p = \sum_I \de a_I|_p \wedge \de x_I$.
+
+	\gap
+	The operator $D$ is defined by $D_v f(p) = \de f_p(v)$. It is the same thing with different placement of the arguments. Similarly, $Df(p) = \de f_p$ and $D_X f = \de f(X)$. The directional derivative of $f$ in the direction of $v$ at $p$ is given by $D_v f(p)$. The directional derivative can also be written $D_v f(p) = \de f_p(v) = Df(p)v$. Another way to define $D_v f(p)$ is $\frac{\de}{\de t} \big|_{t=0} f(p + tv)$.
+
+	\section*{Pushforward}
+	Let $f : M \to N$ be smooth. The pushforward is written $\de f : \frakx(M) \to \frakx(N)$. This is the same as saying that for each $p \in M$, $\de f_p : T_p M \to T_{f(p)} N$, so the pushforward is nothing more than a pointwise application of $\de f$. For $X \in \frakx(M)$, the pushforward $\de f(X)$ is also written $Xf$. This makes sense since, for example, if $X = \partials{}{x_i}$, then $\de f(X) = \partials{f}{x_i}$ since $\de f_p(X|_p) = \de f_p(e_i) = \partials{f}{x_i}$ (in this example we are in Euclidean space).
+
+	\section*{Pullback}
 	Let $f : M \to N$ be smooth and $\omega \in \Omega^k(N)$, so for $q \in N$, $\omega|_q \in \Lambda^k(T_q^* N)$. We want the pullback to be $f^* \omega \in \Omega^k(M)$, so for $p \in M$, $(f^* \omega)|_p \in \Lambda^k(T_p^* M)$. Using the fact that exterior $k$-forms are $k$-linear functions, and for $p \in M$ and $v_1, \ldots, v_k \in T_p M$, the pullback is defined as
-	\[ ((f^* \omega)|_p)(v_1, \ldots, v_k) = (\omega|_{f(p)})(\de f|_p(v_1), \ldots, \de f|_p(v_k)). \]
-	The reason $\de f|_p$ is involved is because it maps from $T_p M$ to $T_{f(p)} N$. In fact, the pullback $(f^* \omega)|_p$ is really the dual of the linear map $\de f|_p$, namely $(\de f|_p)^* (\omega|_{f(p)})$. Less precisely, pullbacks can be written by excluding all mentions of $p$ and making the pointwise definition implicit:
-	\[ f^* \omega(v_1, \ldots, v_k) = \omega(\de f(v_1), \ldots, \de f(v_k)). \]
+	\[ ((f^* \omega)|_p)(v_1, \ldots, v_k) = (\omega|_{f(p)})(\de f_p(v_1), \ldots, \de f_p(v_k)). \]
+	The reason $\de f|_p$ is involved is because it maps from $T_p M$ to $T_{f(p)} N$. In fact, the pullback $(f^* \omega)|_p$ is really the dual of the linear map $\de f_p$, namely $(\de f_p)^* (\omega|_{f(p)})$. Less precisely, pullbacks can be written by excluding all mentions of $p$ and making the pointwise definition implicit, with $X_i \in \frakx(M)$:
+	\[ f^* \omega(X_1, \ldots, X_k) = \omega(\de f(X_1), \ldots, \de f(X_k)). \]
 
 \end{document}
